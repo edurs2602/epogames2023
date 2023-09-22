@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dyigq2r2bbblw"]
+
+[node name="Label" type="Label"]
+offset_left = 138.0
+offset_top = 61.0
+offset_right = 308.0
+offset_bottom = 160.0
+text = "Imagine ser flamenguista
+em pleno 2023"
