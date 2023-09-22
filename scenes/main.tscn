@@ -1,10 +1,44 @@
-[gd_scene load_steps=2 format=3 uid="uid://0l27wq2r12gw"]
+[gd_scene load_steps=7 format=3 uid="uid://0l27wq2r12gw"]
+
+[ext_resource type="Script" path="res://src/Actors/Player.gd" id="1_s033f"]
+[ext_resource type="Texture2D" uid="uid://c6hbv0y2ph4j5" path="res://icon.svg" id="2_i46mn"]
+[ext_resource type="Texture2D" uid="uid://dewkiqhotnuch" path="res://assets/start-assets/background.png" id="3_7d3tq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfy37"]
+size = Vector2(130, 128)
+
+[sub_resource type="TileSet" id="TileSet_5kb6j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qi1j"]
+size = Vector2(686, 20)
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(69, 52)
+script = ExtResource("1_s033f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(64, 63)
 shape = SubResource("RectangleShape2D_qfy37")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_i46mn")
+centered = false
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_5kb6j")
+format = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(7, 469)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(333, 0)
+shape = SubResource("RectangleShape2D_6qi1j")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(330.165, 8)
+scale = Vector2(0.368578, 0.0362981)
+texture = ExtResource("3_7d3tq")
