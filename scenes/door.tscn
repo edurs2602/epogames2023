@@ -1,5 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://clw25a0feg1gq"]
 
+
 [ext_resource type="Script" path="res://src/Actors/scripts/enviroment/door.gd" id="1_jfatk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cteu7"]
