@@ -11,6 +11,7 @@ const JUMP_VELOCITY = -400.0
 
 var HEALTH = 30
 var directionYIdle = 2
+var yDelta = 1
 var is_enemy_on_floor = null
 var timing_fly = null
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -22,9 +23,11 @@ func _physics_process(delta):
 	else:
 		is_enemy_on_floor = false
 		
+	
+		
 	if !is_enemy_on_floor and !player_chase:
 		#velocity.y += (directionYIdle * SPEED) * delta
-		pass
+		velocity.y = move_toward(position.y, position.y - 2, delta * yDelta)
 		
 	if(player_chase):
 		position += (player.position - position)/SPEED
@@ -33,6 +36,7 @@ func _physics_process(delta):
 	
 	
 func _ready():
+	
 	timer.start()
 	
 func _process(delta):
@@ -64,4 +68,4 @@ func _on_detection_area_body_exited(body):
 
 
 func _on_timer_timeout():
-	directionYIdle *= -1
+	yDelta *= -1
