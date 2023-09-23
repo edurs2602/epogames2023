@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://eyoe1g8a7aj8" path="res://scenes/player.tscn" id="3_6gpr6"]
 [ext_resource type="Texture2D" uid="uid://dewkiqhotnuch" path="res://assets/start-assets/background.png" id="3_7d3tq"]
 [ext_resource type="Script" path="res://src/Actors/scripts/player/ProgressBar.gd" id="4_bt68a"]
-[ext_resource type="PackedScene" uid="uid://c0oj2xowl5ru6" path="res://scenes/enemy.tscn" id="4_kmoea"]
-[ext_resource type="PackedScene" uid="uid://dc2t151idndmg" path="res://scenes/enviroment/coin.tscn" id="5_8vmbr"]
+[ext_resource type="PackedScene" uid="uid://c0oj2xowl5ru6" path="res://scenes/enemy/enemy.tscn" id="4_kmoea"]
+[ext_resource type="PackedScene" uid="uid://dc2t151idndmg" path="res://scenes/coin.tscn" id="5_8vmbr"]
 
 [sub_resource type="TileSet" id="TileSet_5kb6j"]
 
