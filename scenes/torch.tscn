@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://gfkwpqbtskov"]
+[gd_scene load_steps=5 format=3 uid="uid://c2t6sy0udpsyb"]
 
-[ext_resource type="Script" path="res://torch.gd" id="1_j04gy"]
+[ext_resource type="Script" path="res://src/Actors/scripts/enviroment/torch.gd" id="1_rkpa2"]
+
 
 [sub_resource type="Gradient" id="Gradient_h2wn6"]
 
@@ -15,7 +16,8 @@ radius = 18.1108
 [node name="torch" type="Area2D"]
 collision_layer = 0
 collision_mask = 8
-script = ExtResource("1_j04gy")
+script = ExtResource("1_rkpa2")
+
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.929412, 0.690196, 0.4, 1)

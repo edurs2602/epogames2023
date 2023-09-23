@@ -26,3 +26,4 @@ func _on_torch_torch_lighted(torch_group):
 	
 	if atived_levers == number_of_levers:
 		open_door()
+
