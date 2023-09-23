@@ -44,6 +44,9 @@ func _process(delta):
 		hitbox.disabled = false
 		timer.start()
 		attack()
+		
+	if Input.is_action_just_pressed("ui_left"):
+		pass
 
 func take_damage(damage_count):
 	LIFE -= damage_count

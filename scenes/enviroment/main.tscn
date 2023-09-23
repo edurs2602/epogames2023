@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://0bajasm1ervt"]
+
+[ext_resource type="PackedScene" uid="uid://eyoe1g8a7aj8" path="res://scenes/player.tscn" id="3_6gpr6"]
+[ext_resource type="Texture2D" uid="uid://dewkiqhotnuch" path="res://assets/start-assets/background.png" id="3_7d3tq"]
+[ext_resource type="Script" path="res://src/Actors/scripts/player/ProgressBar.gd" id="4_bt68a"]
+[ext_resource type="PackedScene" uid="uid://c0oj2xowl5ru6" path="res://scenes/enemy/enemy.tscn" id="4_kmoea"]
+[ext_resource type="PackedScene" uid="uid://dc2t151idndmg" path="res://scenes/enviroment/coin.tscn" id="5_8vmbr"]
+
+[sub_resource type="TileSet" id="TileSet_5kb6j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qi1j"]
+size = Vector2(686, 20)
+
+[node name="main_node" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_5kb6j")
+format = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(7, 469)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(333, 0)
+shape = SubResource("RectangleShape2D_6qi1j")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(330.165, 8)
+scale = Vector2(0.368578, 0.0362981)
+texture = ExtResource("3_7d3tq")
+
+[node name="enemy" parent="." instance=ExtResource("4_kmoea")]
+position = Vector2(472, 346)
+
+[node name="Player" parent="." instance=ExtResource("3_6gpr6")]
+position = Vector2(68, 253)
+
+[node name="healthBar" type="ProgressBar" parent="." groups=["health_bar"]]
+modulate = Color(0.894118, 0, 0, 1)
+offset_left = 20.0
+offset_top = 23.0
+offset_right = 239.0
+offset_bottom = 56.0
+value = 100.0
+show_percentage = false
+script = ExtResource("4_bt68a")
+
+[node name="Coin" parent="." instance=ExtResource("5_8vmbr")]
+position = Vector2(272, 339)
