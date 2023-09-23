@@ -14,7 +14,7 @@ var is_player_alive = true
 var position_between_player_enemy = null
 
 # Knockback variables
-var knockback_vector = Vector2.ZERO
+#var knockback_vector = Vector2.ZERO
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -37,8 +37,8 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
-	if knockback_vector != Vector2.ZERO:
-		velocity = knockback_vector
+	#if knockback_vector != Vector2.ZERO:
+	#	velocity = knockback_vector
 
 	move_and_slide()
 
@@ -68,12 +68,12 @@ func take_damage(damage_count):
 	if (LIFE <= 0):
 		queue_free()
 
+
 func attack():
 	print("attack")
 	if enemy_on_hitbox:
 		print(enemy_on_hitbox)
 		enemy_on_hitbox.take_damage(DAMAGE)
-
 
 
 func _on_attack_hitbox_body_entered(body):

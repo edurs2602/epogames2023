@@ -55,7 +55,7 @@ centered = false
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_smoothed = true
 position_smoothing_enabled = true
-position_smoothing_speed = 50.0
+position_smoothing_speed = 75.0
 
 [node name="ray_right" type="RayCast2D" parent="."]
 position = Vector2(64, 31)
