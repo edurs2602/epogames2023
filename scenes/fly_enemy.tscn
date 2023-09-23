@@ -16,11 +16,6 @@ collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_n3cx5")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-0.5, -1.5)
-scale = Vector2(0.657407, 0.72043)
-texture = ExtResource("1_faspw")
-
 [node name="Enemy_colision" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
 scale = Vector2(1, 0.88)
@@ -50,7 +45,18 @@ debug_color = Color(0.996078, 0, 0.180392, 0.419608)
 scale = Vector2(18.2249, -17.2947)
 shape = SubResource("CircleShape2D_jhgx4")
 
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
+position = Vector2(-0.5, -1.5)
+scale = Vector2(0.657407, 0.72043)
+texture = ExtResource("1_faspw")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

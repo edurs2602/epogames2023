@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+@onready var position2D=$Marker2D/Sprite2D
+@onready var timer=$Timer
+
 var player = null
 var player_chase = false
 
@@ -7,17 +10,30 @@ const SPEED = 80.0
 const JUMP_VELOCITY = -400.0
 
 var HEALTH = 30
+var directionYIdle = 2
+var is_enemy_on_floor = null
+var timing_fly = null
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta):
-	if !is_on_floor():
+	if is_on_floor():
+		is_enemy_on_floor = true
+	else:
+		is_enemy_on_floor = false
 		
-
+	if !is_enemy_on_floor and !player_chase:
+		#velocity.y += (directionYIdle * SPEED) * delta
+		pass
+		
 	if(player_chase):
 		position += (player.position - position)/SPEED
 
 	move_and_slide()
+	
+	
+func _ready():
+	timer.start()
 	
 func _process(delta):
 	pass
@@ -45,3 +61,7 @@ func _on_detection_area_body_entered(body):
 func _on_detection_area_body_exited(body):
 	player = null
 	player_chase = false
+
+
+func _on_timer_timeout():
+	directionYIdle *= -1
