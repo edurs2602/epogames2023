@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://eyoe1g8a7aj8"]
+
+[ext_resource type="Script" path="res://src/Actors/Player.gd" id="1_ihxq4"]
+[ext_resource type="Texture2D" uid="uid://c6hbv0y2ph4j5" path="res://icon.svg" id="2_834x8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p01ed"]
+size = Vector2(118.75, 53)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfy37"]
+size = Vector2(130, 128)
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 6
+script = ExtResource("1_ihxq4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_834x8")
+centered = false
+
+[node name="attack_hitbox" type="Area2D" parent="."]
+position = Vector2(64, 64)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_hitbox"]
+position = Vector2(51.625, -33)
+shape = SubResource("RectangleShape2D_p01ed")
+debug_color = Color(1, 0, 0.129412, 0.419608)
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_mask = 6
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(32, 31)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_qfy37")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(32, 31)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_qfy37")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[connection signal="body_entered" from="attack_hitbox" to="." method="_on_attack_hitbox_body_entered"]
+[connection signal="body_exited" from="attack_hitbox" to="." method="_on_attack_hitbox_body_exited"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
