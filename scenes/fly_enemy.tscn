@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://cictcb1ljgss2"]
+
+[ext_resource type="Texture2D" uid="uid://hhqudxgwpryt" path="res://assets/fly_enemy.png" id="1_faspw"]
+[ext_resource type="Script" path="res://src/Actors/scripts/fly_enemy.gd" id="1_n3cx5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qx8ha"]
+radius = 36.5266
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yo6j0"]
+size = Vector2(71, 67)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jhgx4"]
+
+[node name="fly_enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_n3cx5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.5, -1.5)
+scale = Vector2(0.657407, 0.72043)
+texture = ExtResource("1_faspw")
+
+[node name="Enemy_colision" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+scale = Vector2(1, 0.88)
+shape = SubResource("CircleShape2D_qx8ha")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_yo6j0")
+debug_color = Color(0.647059, 0.517647, 0.12549, 0.419608)
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_yo6j0")
+debug_color = Color(0.996078, 0, 0.180392, 0.419608)
+
+[node name="detection_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+scale = Vector2(18.2249, -17.2947)
+shape = SubResource("CircleShape2D_jhgx4")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
