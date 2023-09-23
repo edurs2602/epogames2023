@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var SPEED = 100
+
 var HEALTH = 30
 
 var player = null
@@ -40,6 +41,7 @@ func _on_hitbox_body_entered(body):
 	if body.has_method("player") and enemy_can_attack:
 		body.take_damage(10)
 		$attack_cooldown.start()
+		
 
 func _on_attack_cooldown_timeout():
 	enemy_can_attack = true
@@ -53,3 +55,6 @@ func take_damage(damage):
 
 func _on_hurtbox_area_entered(area):
 	take_damage(10)
+	
+
+

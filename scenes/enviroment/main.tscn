@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://0bajasm1ervt"]
+[gd_scene load_steps=10 format=3 uid="uid://0bajasm1ervt"]
 
 [ext_resource type="PackedScene" uid="uid://eyoe1g8a7aj8" path="res://scenes/player.tscn" id="3_6gpr6"]
 [ext_resource type="Texture2D" uid="uid://dewkiqhotnuch" path="res://assets/start-assets/background.png" id="3_7d3tq"]
@@ -6,15 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://c0oj2xowl5ru6" path="res://scenes/enemy/enemy.tscn" id="4_kmoea"]
 [ext_resource type="PackedScene" path="res://scenes/coin.tscn" id="5_8vmbr"]
 [ext_resource type="PackedScene" uid="uid://cictcb1ljgss2" path="res://scenes/fly_enemy.tscn" id="6_f5jpi"]
-[ext_resource type="PackedScene" path="res://scenes/door.tscn" id="7_xl8iy"]
-[ext_resource type="PackedScene" uid="uid://dp85e7yhmed05" path="res://scenes/object_break.tscn" id="8_m04rj"]
-[ext_resource type="PackedScene" path="res://scenes/torch.tscn" id="9_r2ahb"]
-[ext_resource type="PackedScene" path="res://scenes/spikes.tscn" id="10_gvef5"]
 
 [sub_resource type="TileSet" id="TileSet_5kb6j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qi1j"]
 size = Vector2(686, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gxgtl"]
+size = Vector2(8.67884, 7.74146)
 
 [node name="main_node" type="Node2D"]
 
@@ -59,14 +58,34 @@ position = Vector2(272, 339)
 [node name="fly_enemy" parent="." instance=ExtResource("6_f5jpi")]
 position = Vector2(769, 250)
 
-[node name="door" parent="." instance=ExtResource("7_xl8iy")]
-position = Vector2(1377, 406)
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(1068, 371)
+scale = Vector2(4.52194, 0.0498956)
+collision_layer = 4
+collision_mask = 0
 
-[node name="Object_Break" parent="." instance=ExtResource("8_m04rj")]
-position = Vector2(1793, 426)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(23.4413, 1322.76)
+scale = Vector2(1.17171, -106.145)
+shape = SubResource("RectangleShape2D_gxgtl")
 
-[node name="torch" parent="." instance=ExtResource("9_r2ahb")]
-position = Vector2(1291, 436)
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(23.3739, 1335.8)
+scale = Vector2(0.00545847, 0.803539)
+texture = ExtResource("3_7d3tq")
 
-[node name="spikes" parent="." instance=ExtResource("10_gvef5")]
-position = Vector2(1988, 420)
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(1957, 371)
+scale = Vector2(4.52194, 0.0498956)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(23.4413, 1322.76)
+scale = Vector2(1.17171, -106.145)
+shape = SubResource("RectangleShape2D_gxgtl")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
+position = Vector2(23.3739, 1335.8)
+scale = Vector2(0.00545847, 0.803539)
+texture = ExtResource("3_7d3tq")
