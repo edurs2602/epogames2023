@@ -11,7 +11,6 @@ extends CharacterBody2D
 
 var enemy_on_hitbox = null
 var is_player_alive = true
-var position_flip = null
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
