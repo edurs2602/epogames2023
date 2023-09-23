@@ -27,7 +27,8 @@ func _physics_process(delta):
 		
 	if !is_enemy_on_floor and !player_chase:
 		#velocity.y += (directionYIdle * SPEED) * delta
-		velocity.y = move_toward(position.y, position.y - 2, delta * yDelta)
+		#velocity.y = move_toward(position.y, position.y - 2, delta * yDelta)
+		pass
 		
 	if(player_chase):
 		position += (player.position - position)/SPEED

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cictcb1ljgss2"]
 
+[ext_resource type="Script" path="res://src/Actors/scripts/enemy/fly_enemy.gd" id="1_7cikq"]
 [ext_resource type="Texture2D" uid="uid://hhqudxgwpryt" path="res://assets/fly_enemy.png" id="1_faspw"]
-[ext_resource type="Script" path="res://src/Actors/scripts/fly_enemy.gd" id="1_n3cx5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qx8ha"]
 radius = 36.5266
@@ -14,7 +14,7 @@ size = Vector2(71, 67)
 [node name="fly_enemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 13
-script = ExtResource("1_n3cx5")
+script = ExtResource("1_7cikq")
 
 [node name="Enemy_colision" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
