@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://qnrp8kptenph"]
+[gd_scene load_steps=13 format=3 uid="uid://cictcb1ljgss2"]
 
 [ext_resource type="Script" path="res://src/Actors/scripts/fly_enemy.gd" id="1_n3cx5"]
 [ext_resource type="Texture2D" uid="uid://cc580r2p85a7k" path="res://assets/Sprite_sheet_olho.png" id="2_02o6l"]

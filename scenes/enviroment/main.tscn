@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" path="res://scenes/coin.tscn" id="5_8vmbr"]
 [ext_resource type="PackedScene" uid="uid://cictcb1ljgss2" path="res://scenes/fly_enemy.tscn" id="6_f5jpi"]
 
-
 [sub_resource type="TileSet" id="TileSet_5kb6j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qi1j"]
