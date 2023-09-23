@@ -1,11 +1,15 @@
 extends Area2D
 
+@export var is_lighted = false
+@export var door_group = "none"
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+signal torch_lighted
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func torch():
 	pass
+
+func _on_area_entered(area):
+	print(area)
+	if !is_lighted:
+		is_lighted = true
+		torch_lighted.emit(door_group)
