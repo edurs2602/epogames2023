@@ -1,37 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://eyoe1g8a7aj8"]
 
 [ext_resource type="Script" path="res://src/Actors/scripts/player/Player.gd" id="1_ihxq4"]
-[ext_resource type="Texture2D" uid="uid://c6hbv0y2ph4j5" path="res://icon.svg" id="2_834x8"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p01ed"]
-size = Vector2(118.75, 53)
+[ext_resource type="Texture2D" uid="uid://djom7utoj5me4" path="res://icon.png" id="2_6tlex"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfy37"]
 size = Vector2(130, 128)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p01ed"]
+size = Vector2(118.75, 53)
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 6
 script = ExtResource("1_ihxq4")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_834x8")
-centered = false
-
-[node name="attack_hitbox" type="Area2D" parent="."]
-position = Vector2(64, 64)
-collision_layer = 8
-collision_mask = 2
-
-[node name="Timer" type="Timer" parent="attack_hitbox"]
-wait_time = 0.3
-one_shot = true
-
-[node name="attack_collision" type="CollisionShape2D" parent="attack_hitbox"]
-position = Vector2(51.625, -33)
-shape = SubResource("RectangleShape2D_p01ed")
-disabled = true
-debug_color = Color(1, 0, 0.129412, 0.419608)
 
 [node name="hitbox" type="Area2D" parent="."]
 collision_mask = 2
@@ -48,8 +28,32 @@ scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_qfy37")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
+[node name="attack_hitbox" type="Area2D" parent="."]
+position = Vector2(31, 64)
+collision_layer = 8
+collision_mask = 2
+
+[node name="Timer" type="Timer" parent="attack_hitbox"]
+wait_time = 0.3
+one_shot = true
+
+[node name="attack_collision" type="CollisionShape2D" parent="attack_hitbox"]
+position = Vector2(51.625, -33)
+shape = SubResource("RectangleShape2D_p01ed")
+disabled = true
+debug_color = Color(1, 0, 0.129412, 0.419608)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(32, 31)
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
+position = Vector2(-32, -31)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_6tlex")
+centered = false
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
 [connection signal="body_entered" from="attack_hitbox" to="." method="_on_attack_hitbox_body_entered"]
 [connection signal="body_exited" from="attack_hitbox" to="." method="_on_attack_hitbox_body_exited"]
 [connection signal="timeout" from="attack_hitbox/Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
