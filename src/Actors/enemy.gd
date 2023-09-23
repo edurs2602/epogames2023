@@ -13,6 +13,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 
+
 func enemy():
 	pass
 
@@ -22,6 +23,7 @@ func _physics_process(delta):
 	
 	if(player_chase):
 		position += (player.position - position)/SPEED
+	
 	
 	move_and_slide()
 
@@ -47,3 +49,7 @@ func take_damage(damage):
 	HEALTH -= damage
 	if HEALTH <= 0:
 		self.queue_free()
+
+
+func _on_hurtbox_area_entered(area):
+	take_damage(10)
