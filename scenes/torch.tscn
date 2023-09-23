@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2t6sy0udpsyb"]
+
+[ext_resource type="Script" path="res://src/Actors/scripts/enviroment/torch.gd" id="1_rkpa2"]
+
+[sub_resource type="Gradient" id="Gradient_h2wn6"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y0yah"]
+gradient = SubResource("Gradient_h2wn6")
+fill_from = Vector2(0.94186, 0.340116)
+fill_to = Vector2(0.587209, 0.18314)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hnui4"]
+radius = 18.1108
+
+[node name="torch" type="Area2D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_rkpa2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.929412, 0.690196, 0.4, 1)
+position = Vector2(-3.57628e-07, 4.76837e-07)
+scale = Vector2(0.375, 0.40625)
+texture = SubResource("GradientTexture2D_y0yah")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hnui4")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
