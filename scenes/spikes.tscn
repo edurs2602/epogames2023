@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtemiltpkjvdd"]
+
+[ext_resource type="Script" path="res://src/Actors/scripts/enviroment/spikes.gd" id="1_ofdjp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15vei"]
+size = Vector2(62, 64)
+
+[sub_resource type="Gradient" id="Gradient_oili3"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j1hwn"]
+gradient = SubResource("Gradient_oili3")
+fill_from = Vector2(1, 0.407975)
+fill_to = Vector2(0.435583, 0.984663)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ak7yw"]
+size = Vector2(72, 68)
+
+[node name="spikes" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_ofdjp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_15vei")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.321569, 1, 1)
+texture = SubResource("GradientTexture2D_j1hwn")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_ak7yw")
+debug_color = Color(0.996078, 0, 0.192157, 0.419608)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
