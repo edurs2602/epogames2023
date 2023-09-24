@@ -188,6 +188,7 @@ shape = SubResource("CircleShape2D_jhgx4")
 [node name="Marker2D" type="Marker2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Marker2D"]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_15d8f")
 animation = &"fly"
 metadata/_edit_lock_ = true
