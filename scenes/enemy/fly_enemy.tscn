@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://qnrp8kptenph"]
 
-[ext_resource type="Texture2D" uid="uid://cc580r2p85a7k" path="res://assets/Sprite_sheet_olho.png" id="2_5jnj5"]
+[ext_resource type="Texture2D" path="res://assets/Sprite_sheet_olho.png" id="2_5jnj5"]
 
 [sub_resource type="GDScript" id="GDScript_skibs"]
 script/source = "extends CharacterBody2D
