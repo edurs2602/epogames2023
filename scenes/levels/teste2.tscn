@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://d154p7p3c42hl"]
+
+[ext_resource type="Texture2D" uid="uid://dewkiqhotnuch" path="res://assets/start-assets/background.png" id="1_bltl3"]
+[ext_resource type="PackedScene" uid="uid://eyoe1g8a7aj8" path="res://scenes/player/player.tscn" id="2_l8ypi"]
+[ext_resource type="Script" path="res://src/Actors/scripts/player/ProgressBar.gd" id="3_txe4l"]
+[ext_resource type="PackedScene" uid="uid://buy2fsscnuw0w" path="res://scenes/enviroment/end_level_sign1.tscn" id="4_6cku5"]
+[ext_resource type="PackedScene" uid="uid://5runqmuoeab2" path="res://scenes/enviroment/door.tscn" id="5_clvm7"]
+[ext_resource type="PackedScene" uid="uid://ct0wngjuegbbg" path="res://scenes/enviroment/torch.tscn" id="6_kaash"]
+
+[sub_resource type="TileSet" id="TileSet_5kb6j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qi1j"]
+size = Vector2(686, 20)
+
+[node name="main_node" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_5kb6j")
+format = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(135, 469)
+scale = Vector2(0.5, 1)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(333, 0)
+shape = SubResource("RectangleShape2D_6qi1j")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(330.165, 8)
+scale = Vector2(0.368578, 0.0362981)
+texture = ExtResource("1_bltl3")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(135, 469)
+rotation = -1.60464
+scale = Vector2(0.5, 1)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(333, 0)
+shape = SubResource("RectangleShape2D_6qi1j")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(330.165, 8)
+scale = Vector2(0.368578, 0.0362981)
+texture = ExtResource("1_bltl3")
+
+[node name="Player" parent="." instance=ExtResource("2_l8ypi")]
+position = Vector2(157, 251)
+
+[node name="healthBar" type="ProgressBar" parent="." groups=["health_bar"]]
+modulate = Color(0.894118, 0, 0, 1)
+offset_left = 20.0
+offset_top = 23.0
+offset_right = 239.0
+offset_bottom = 56.0
+value = 100.0
+show_percentage = false
+script = ExtResource("3_txe4l")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 302.0
+offset_top = 261.0
+offset_right = 342.0
+offset_bottom = 284.0
+text = "level 1"
+
+[node name="end_level_sign" parent="." instance=ExtResource("4_6cku5")]
+position = Vector2(795, 380)
+
+[node name="door" parent="." instance=ExtResource("5_clvm7")]
+position = Vector2(295, 406)
+door_group = "teste"
+number_of_levers = 2
+
+[node name="torch" parent="door" instance=ExtResource("6_kaash")]
+position = Vector2(-59, 31)
+door_group = "teste"
+
+[node name="torch2" parent="door" instance=ExtResource("6_kaash")]
+position = Vector2(-70, 5)
+door_group = "teste"
+
+[connection signal="torch_lighted" from="door/torch" to="door" method="_on_torch_torch_lighted"]
+[connection signal="torch_lighted" from="door/torch2" to="door" method="_on_torch_2_torch_lighted"]
