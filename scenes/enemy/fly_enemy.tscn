@@ -1,12 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://qnrp8kptenph"]
+[gd_scene load_steps=17 format=3 uid="uid://qnrp8kptenph"]
 
 [ext_resource type="Texture2D" path="res://assets/Sprite_sheet_olho.png" id="2_5jnj5"]
+[ext_resource type="AudioStream" uid="uid://6eepoc4cmoy6" path="res://assets/sounds/Enemy_hurt_1.wav" id="2_axv4o"]
+[ext_resource type="AudioStream" uid="uid://chcar2xr25scx" path="res://assets/sounds/Enemy_hurt_2.wav" id="3_bmjky"]
 
 [sub_resource type="GDScript" id="GDScript_skibs"]
 script/source = "extends CharacterBody2D
 
 @onready var position2D=$Marker2D/Sprite2D
 @onready var timer=$Timer
+@onready var sound_enemy_hurt = $Sound_enemy_hurt
 
 var player = null
 var player_chase = false
@@ -79,6 +82,7 @@ func _on_detection_area_body_exited(body):
 
 func _on_timer_timeout():
 	yDelta *= -1
+
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qx8ha"]
@@ -143,6 +147,13 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8jv44"]
+streams_count = 2
+stream_0/stream = ExtResource("2_axv4o")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("3_bmjky")
+stream_1/weight = 1.0
+
 [node name="fly_enemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 13
@@ -171,7 +182,6 @@ collision_mask = 13
 position = Vector2(-0.5, -1.5)
 shape = SubResource("CircleShape2D_de1su")
 debug_color = Color(0.996078, 0, 0.180392, 0.419608)
-metadata/_edit_lock_ = true
 
 [node name="detection_area" type="Area2D" parent="."]
 
@@ -182,12 +192,16 @@ shape = SubResource("CircleShape2D_jhgx4")
 [node name="Marker2D" type="Marker2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Marker2D"]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_15d8f")
 animation = &"fly"
 metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="Sound_enemy_hurt" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_8jv44")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

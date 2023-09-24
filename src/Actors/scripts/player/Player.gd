@@ -8,13 +8,15 @@ extends CharacterBody2D
 
 
 @onready var attack_collision_hitbox = $attack_hitbox/attack_collision
-@onready var timer = $attack_hitbox/Timer
+@onready var attack_timer = $attack_hitbox/Attack_timer
 @onready var animated_sprite=$Marker2D/AnimatedSprite2D
 @onready var raycast_right = $raycast_right
 @onready var raycast_left = $raycast_left
 @onready var sound_step = $Sound_step
 @onready var step_timer = $Sound_step/Step_timer
 @onready var sound_jump = $Sound_jump
+@onready var sound_attack = $Sound_attack 
+@onready var sound_dead = $Sound_dead
 
 var enemy_on_hitbox = null
 var is_player_alive = true
@@ -69,9 +71,11 @@ func _physics_process(delta):
 func _process(delta):
 	
 	if Input.is_action_just_pressed("shift"):
-		attack_collision_hitbox.disabled = false
-		timer.start()
-		attack()
+		if attack_timer.time_left <= 0:
+			sound_attack.play()
+			attack_collision_hitbox.disabled = false
+			attack_timer.start()
+			attack()
 	
 	if Input.is_action_just_pressed("ui_left"):
 		if attack_collision_hitbox.position.x > 0:
@@ -97,14 +101,18 @@ func receive_knockback(knockback_force : Vector2, damage := true, duration := .3
 
 func take_damage(damage_count: int ):
 	LIFE -= damage_count
+	
 	if raycast_right.is_colliding():
 		receive_knockback(Vector2(-200,-200))
 	elif raycast_left.is_colliding():
 		receive_knockback(Vector2(200,-200))
+		
 	animated_sprite.play("damage")
 	var health_bar = get_node("/root/main_node/healthBar")
 	health_bar.value -= damage_count
+	
 	if (LIFE <= 0):
+		sound_dead.play()
 		animated_sprite.play("dying")
 		self.set_process(false)
 		self.set_physics_process(false)
