@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmqls8xdbw8d"]
+
+[ext_resource type="Texture2D" uid="uid://dewkiqhotnuch" path="res://assets/start-assets/background.png" id="1_uq7ld"]
+[ext_resource type="PackedScene" uid="uid://eyoe1g8a7aj8" path="res://scenes/player/player.tscn" id="2_ufgrk"]
+[ext_resource type="Script" path="res://src/Actors/scripts/player/ProgressBar.gd" id="3_l4v47"]
+[ext_resource type="PackedScene" uid="uid://dqpcrid6myhsv" path="res://scenes/enviroment/end_level_sign2.tscn" id="4_bwhn7"]
+
+[sub_resource type="TileSet" id="TileSet_5kb6j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qi1j"]
+size = Vector2(686, 20)
+
+[node name="main_node" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_5kb6j")
+format = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(135, 469)
+scale = Vector2(0.5, 1)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(333, 0)
+shape = SubResource("RectangleShape2D_6qi1j")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(330.165, 8)
+scale = Vector2(0.368578, 0.0362981)
+texture = ExtResource("1_uq7ld")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(135, 469)
+rotation = -1.60464
+scale = Vector2(0.5, 1)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(333, 0)
+shape = SubResource("RectangleShape2D_6qi1j")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(330.165, 8)
+scale = Vector2(0.368578, 0.0362981)
+texture = ExtResource("1_uq7ld")
+
+[node name="Player" parent="." instance=ExtResource("2_ufgrk")]
+position = Vector2(157, 251)
+
+[node name="healthBar" type="ProgressBar" parent="." groups=["health_bar"]]
+modulate = Color(0.894118, 0, 0, 1)
+offset_left = 20.0
+offset_top = 23.0
+offset_right = 239.0
+offset_bottom = 56.0
+value = 100.0
+show_percentage = false
+script = ExtResource("3_l4v47")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 302.0
+offset_top = 261.0
+offset_right = 342.0
+offset_bottom = 284.0
+text = "level 2 poha"
+
+[node name="end_level_sign" parent="." instance=ExtResource("4_bwhn7")]
+position = Vector2(320, 442)

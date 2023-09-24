@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://blqx68xfeg0ur"]
+
+[ext_resource type="Script" path="res://src/Actors/scripts/ui/choose_power_uo.gd" id="1_wjuoj"]
+
+[node name="choose_power_uo" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wjuoj")
+
+[node name="power_2" type="Button" parent="."]
+layout_mode = 2
+offset_left = 89.0
+offset_top = -129.0
+offset_right = 186.0
+offset_bottom = 56.0
+text = "Power Up 2"
+
+[node name="power_1" type="Button" parent="."]
+layout_mode = 2
+offset_left = -141.0
+offset_top = -129.0
+offset_right = -44.0
+offset_bottom = 56.0
+text = "Power Up 1"
+
+[node name="no_power" type="Button" parent="."]
+layout_mode = 2
+offset_left = -44.0
+offset_top = 115.0
+offset_right = 89.0
+offset_bottom = 184.0
+text = "No power"
+
+[connection signal="pressed" from="power_2" to="." method="_on_power_2_pressed"]
+[connection signal="pressed" from="power_1" to="." method="_on_power_1_pressed"]
+[connection signal="pressed" from="no_power" to="." method="_on_no_power_pressed"]

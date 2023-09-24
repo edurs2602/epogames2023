@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6s7di42d3fje"
-path="res://.godot/imported/sprite_sheet_da_coelha.png-9d3191b18ab7073f09d28eec31eb4e76.ctex"
+uid="uid://f7042bv5gaeo"
+path="res://.godot/imported/sheet_golem_golem_golem_golem.png-fd28e89c820ecb2f46f16313e39047d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprite_sheet_da_coelha.png"
-dest_files=["res://.godot/imported/sprite_sheet_da_coelha.png-9d3191b18ab7073f09d28eec31eb4e76.ctex"]
+source_file="res://assets/sheet_golem_golem_golem_golem.png"
+dest_files=["res://.godot/imported/sheet_golem_golem_golem_golem.png-fd28e89c820ecb2f46f16313e39047d3.ctex"]
 
 [params]
 

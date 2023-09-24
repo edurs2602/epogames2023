@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://clw25a0feg1gq"]
+[gd_scene load_steps=5 format=3 uid="uid://5runqmuoeab2"]
 
-
-[ext_resource type="Script" path="res://src/Actors/scripts/enviroment/door.gd" id="1_jfatk"]
+[ext_resource type="Script" path="res://src/Actors/scripts/enviroment/door.gd" id="1_gjaia"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cteu7"]
 size = Vector2(64, 96)
@@ -16,7 +15,7 @@ fill_to = Vector2(0.476744, 0)
 [node name="door" type="StaticBody2D" groups=["door"]]
 collision_layer = 4
 collision_mask = 3
-script = ExtResource("1_jfatk")
+script = ExtResource("1_gjaia")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cteu7")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6s7di42d3fje"
-path="res://.godot/imported/sprite_sheet_da_coelha.png-9d3191b18ab7073f09d28eec31eb4e76.ctex"
+uid="uid://btokv6av53k4c"
+path="res://.godot/imported/sheet_preda.png-07ea890fc61f7123d682136fed468c16.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprite_sheet_da_coelha.png"
-dest_files=["res://.godot/imported/sprite_sheet_da_coelha.png-9d3191b18ab7073f09d28eec31eb4e76.ctex"]
+source_file="res://assets/sheet_preda.png"
+dest_files=["res://.godot/imported/sheet_preda.png-07ea890fc61f7123d682136fed468c16.ctex"]
 
 [params]
 

@@ -8,8 +8,8 @@ var player_chase = false
 
 const SPEED = 80.0
 const JUMP_VELOCITY = -400.0
+var HEALTH = 7
 
-var HEALTH = 30
 var directionYIdle = 2
 var yDelta = 1
 var is_enemy_on_floor = null

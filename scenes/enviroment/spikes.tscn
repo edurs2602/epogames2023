@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dtemiltpkjvdd"]
 
-[ext_resource type="Script" path="res://src/Actors/scripts/enviroment/spikes.gd" id="1_ofdjp"]
+[ext_resource type="Script" path="res://src/Actors/scripts/enviroment/spikes.gd" id="1_olkc0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15vei"]
 size = Vector2(62, 64)
@@ -18,7 +18,7 @@ size = Vector2(72, 68)
 [node name="spikes" type="StaticBody2D"]
 collision_layer = 4
 collision_mask = 3
-script = ExtResource("1_ofdjp")
+script = ExtResource("1_olkc0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_15vei")
