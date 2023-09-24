@@ -38,7 +38,7 @@ func flip():
 
 func _on_hitbox_body_entered(body):
 	if body.has_method("player") and enemy_can_attack:
-		body.take_damage(30)
+		body.take_damage(1)
 		$attack_cooldown.start()
 
 func _on_attack_cooldown_timeout():
@@ -51,4 +51,4 @@ func take_damage(damage):
 		self.queue_free()
 
 func _on_hurtbox_area_entered(area):
-	take_damage(10)
+	take_damage(GlobalVariables.PLAYER_DAMAGE)

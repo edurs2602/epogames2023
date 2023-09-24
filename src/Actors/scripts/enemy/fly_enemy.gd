@@ -54,12 +54,12 @@ func take_damage(damage):
 		self.queue_free()
 
 func _on_hurtbox_area_entered(area):
-	take_damage(10)
+	take_damage(GlobalVariables.PLAYER_DAMAGE)
 	
 	
 func _on_hitbox_body_entered(body):
 	if body.has_method("player"):
-		body.take_damage(10)
+		body.take_damage(1)
 
 
 func _on_detection_area_body_entered(body):
