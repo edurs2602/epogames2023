@@ -19,6 +19,7 @@ var directionYIdle = 2
 var yDelta = 1
 var is_enemy_on_floor = null
 var timing_fly = null
+var enemy_can_attack = true
 var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 
 func _ready():
@@ -63,8 +64,9 @@ func _on_hurtbox_area_entered(area):
 	
 	
 func _on_hitbox_body_entered(body):
-	if body.has_method(\"player\"):
-		body.take_damage(10)
+	if body.has_method(\"player\") and enemy_can_attack:
+		body.take_damage(1)
+		$attack_cooldown.start()
 
 
 func _on_detection_area_body_entered(body):
@@ -79,6 +81,10 @@ func _on_detection_area_body_exited(body):
 
 func _on_timer_timeout():
 	yDelta *= -1
+
+
+func _on_attack_cooldown_timeout():
+	enemy_can_attack = true
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qx8ha"]
@@ -189,8 +195,11 @@ metadata/_edit_lock_ = true
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="attack_cooldown" type="Timer" parent="."]
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
