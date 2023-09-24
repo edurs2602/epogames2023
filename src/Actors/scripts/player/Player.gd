@@ -12,9 +12,9 @@ extends CharacterBody2D
 @onready var animated_sprite=$Marker2D/AnimatedSprite2D
 @onready var raycast_right = $raycast_right
 @onready var raycast_left = $raycast_left
-@onready var sound_step = $Sound_step
-@onready var step_timer = $Sound_step/Step_timer
-@onready var sound_jump = $Sound_jump
+#@onready var sound_step = $Sound_step
+#@onready var step_timer = $Sound_step/Step_timer
+#@onready var sound_jump = $Sound_jump
 
 var enemy_on_hitbox = null
 var is_player_alive = true
@@ -38,7 +38,7 @@ func _physics_process(delta):
 	
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		sound_jump.play()
+		#sound_jump.play()
 		velocity.y = JUMP_VELOCITY
 
 	
@@ -51,11 +51,11 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
-	if is_on_floor():
-		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") :
-			if step_timer.time_left <= 0:
-				sound_step.play()
-				step_timer.start()
+	#if is_on_floor():
+		#if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") :
+			#if step_timer.time_left <= 0:
+				#sound_step.play()
+				#step_timer.start()
 	
 	
 	if knockback_vector != Vector2.ZERO:

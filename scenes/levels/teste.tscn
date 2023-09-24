@@ -1,15 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://cagk3tvupji8w"]
+[gd_scene load_steps=10 format=3 uid="uid://cagk3tvupji8w"]
 
 [ext_resource type="Texture2D" uid="uid://dewkiqhotnuch" path="res://assets/start-assets/background.png" id="1_2br87"]
 [ext_resource type="PackedScene" uid="uid://eyoe1g8a7aj8" path="res://scenes/player/player.tscn" id="2_6qbea"]
 [ext_resource type="Script" path="res://src/Actors/scripts/player/ProgressBar.gd" id="3_8cmbg"]
 [ext_resource type="PackedScene" uid="uid://buy2fsscnuw0w" path="res://scenes/enviroment/end_level_sign1.tscn" id="4_u2qp5"]
 [ext_resource type="PackedScene" uid="uid://ciegtglp2k0dm" path="res://scenes/enemy/dumb_enemy.tscn" id="5_fdn85"]
+[ext_resource type="PackedScene" uid="uid://5runqmuoeab2" path="res://scenes/enviroment/door.tscn" id="6_k1hjo"]
+[ext_resource type="PackedScene" uid="uid://ct0wngjuegbbg" path="res://scenes/enviroment/torch.tscn" id="7_x4yht"]
 
 [sub_resource type="TileSet" id="TileSet_5kb6j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qi1j"]
-size = Vector2(686, 20)
+size = Vector2(2002, 20)
 
 [node name="main_node" type="Node2D"]
 
@@ -24,12 +26,12 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(333, 0)
+position = Vector2(991, 0)
 shape = SubResource("RectangleShape2D_6qi1j")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(330.165, 8)
-scale = Vector2(0.368578, 0.0362981)
+position = Vector2(989.083, 7)
+scale = Vector2(1.05304, 0.0362981)
 texture = ExtResource("1_2br87")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
@@ -73,3 +75,14 @@ position = Vector2(470, 259)
 
 [node name="dumb_enemy" parent="." instance=ExtResource("5_fdn85")]
 position = Vector2(365, 439)
+
+[node name="door" parent="." instance=ExtResource("6_k1hjo")]
+position = Vector2(872, 445)
+door_group = "level_teste"
+number_of_levers = 1
+
+[node name="torch" parent="door" instance=ExtResource("7_x4yht")]
+position = Vector2(-117, -2)
+door_group = "level_teste"
+
+[connection signal="torch_lighted" from="door/torch" to="door" method="_on_torch_torch_lighted"]

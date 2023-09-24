@@ -82,4 +82,4 @@ shape = SubResource("RectangleShape2D_cteu7")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_vtvia")
-animation = &"door_opened"
+animation = &"door_closed"

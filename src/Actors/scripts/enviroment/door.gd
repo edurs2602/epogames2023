@@ -12,7 +12,7 @@ func open_door():
 	is_open = true
 	self.set_collision_layer_value(3,false)
 	$AnimatedSprite2D.play("door_opening")
-	$AnimatedSprite2D.play("door_opened")
+	#$AnimatedSprite2D.play("door_opened")
 	
 func close_door():
 	is_open = false
@@ -27,6 +27,6 @@ func _on_torch_torch_lighted(torch_group):
 	if torch_group == door_group:
 		atived_levers += 1
 	
-	if atived_levers == number_of_levers:
+	if atived_levers >= number_of_levers:
 		open_door()
 
