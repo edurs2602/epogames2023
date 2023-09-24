@@ -1,13 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfcsyihu1inct"]
+[gd_scene load_steps=3 format=3 uid="uid://dfcsyihu1inct"]
+
+[ext_resource type="Texture2D" uid="uid://co8sqke6s48pj" path="res://assets/Sprite Sheet placa.png" id="1_r7600"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_60eg0"]
-size = Vector2(44, 24)
+size = Vector2(52, 30)
 
 [node name="read_sign" type="Area2D"]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_60eg0")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
@@ -15,3 +17,9 @@ offset_left = -19.0
 offset_top = -32.0
 offset_right = 19.0
 offset_bottom = -16.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_r7600")
+hframes = 2
+frame = 1

@@ -1,29 +1,64 @@
-[gd_scene load_steps=5 format=3 uid="uid://ct0wngjuegbbg"]
+[gd_scene load_steps=9 format=3 uid="uid://ct0wngjuegbbg"]
 
 [ext_resource type="Script" path="res://src/Actors/scripts/enviroment/torch.gd" id="1_3jq82"]
-
-[sub_resource type="Gradient" id="Gradient_h2wn6"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_y0yah"]
-gradient = SubResource("Gradient_h2wn6")
-fill_from = Vector2(0.94186, 0.340116)
-fill_to = Vector2(0.587209, 0.18314)
+[ext_resource type="Texture2D" uid="uid://tcp2wanpxw1p" path="res://assets/tocha da cabeca vermelhinha.png" id="2_t8fih"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hnui4"]
-radius = 18.1108
+radius = 9.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2unmq"]
+atlas = ExtResource("2_t8fih")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vogn7"]
+atlas = ExtResource("2_t8fih")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pd57f"]
+atlas = ExtResource("2_t8fih")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iys37"]
+atlas = ExtResource("2_t8fih")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gukm8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2unmq")
+}],
+"loop": true,
+"name": &"turned_off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vogn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pd57f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iys37")
+}],
+"loop": true,
+"name": &"turned_on",
+"speed": 5.0
+}]
 
 [node name="torch" type="Area2D"]
 collision_layer = 0
 collision_mask = 8
 script = ExtResource("1_3jq82")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.929412, 0.690196, 0.4, 1)
-position = Vector2(-3.57628e-07, 4.76837e-07)
-scale = Vector2(0.375, 0.40625)
-texture = SubResource("GradientTexture2D_y0yah")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_hnui4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_gukm8")
+animation = &"turned_on"
+frame_progress = 0.335404
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
