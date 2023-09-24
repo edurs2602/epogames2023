@@ -70,22 +70,34 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _process(delta):
-	
-	if Input.is_action_just_pressed("shift"):
+	if Input.is_action_just_pressed("shift") and $Marker2D/whip_sprite/whip_wait_to_end.time_left == 0:
 		if attack_timer.time_left <= 0:
 			sound_attack.play()
 			attack_collision_hitbox.disabled = false
 			attack_timer.start()
 			attack()
+			$Marker2D/whip_sprite/whip_wait_to_end.start()
+			if velocity.x != 0:
+				$Marker2D/whip_sprite.show()
+				$Marker2D/whip_sprite.play("whip_walking")
+				animated_sprite.hide()
+			else:
+				$Marker2D/whip_sprite.show()
+				$Marker2D/whip_sprite.play("whip_stopped")
+				animated_sprite.hide()
 	
 	if Input.is_action_just_pressed("ui_left"):
 		if attack_collision_hitbox.position.x > 0:
 			attack_collision_hitbox.position.x *= -1
 		animated_sprite.flip_h = true
+		$Marker2D/whip_sprite.flip_h = true
+		$Marker2D/whip_sprite.offset= Vector2(-20,0)
 	if Input.is_action_just_pressed("ui_right"):
 		if attack_collision_hitbox.position.x < 0:
 			attack_collision_hitbox.position.x *= -1
 		animated_sprite.flip_h = false
+		$Marker2D/whip_sprite.flip_h = false
+		$Marker2D/whip_sprite.offset= Vector2(0,0)
 
 
 func receive_knockback(knockback_force : Vector2, damage := true, duration := .3):
@@ -164,3 +176,8 @@ func _on_animated_sprite_2d_animation_looped():
 
 func _on_step_timer_timeout():
 	pass
+
+
+func _on_whip_wait_to_end_timeout():
+	animated_sprite.show()
+	$Marker2D/whip_sprite.hide()

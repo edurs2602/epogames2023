@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dk5fputpafwlx"]
+[gd_scene load_steps=7 format=3 uid="uid://dk5fputpafwlx"]
 
 [ext_resource type="Texture2D" uid="uid://dewkiqhotnuch" path="res://assets/start-assets/background.png" id="1_2br87"]
 [ext_resource type="PackedScene" uid="uid://eyoe1g8a7aj8" path="res://scenes/player/player.tscn" id="2_6qbea"]
 [ext_resource type="Script" path="res://src/Actors/scripts/player/ProgressBar.gd" id="3_8cmbg"]
 [ext_resource type="PackedScene" uid="uid://buy2fsscnuw0w" path="res://scenes/enviroment/end_level_sign1.tscn" id="4_u2qp5"]
-[ext_resource type="PackedScene" uid="uid://ciegtglp2k0dm" path="res://scenes/enemy/dumb_enemy.tscn" id="5_fdn85"]
 
 [sub_resource type="TileSet" id="TileSet_5kb6j"]
 
@@ -70,6 +69,3 @@ text = "level 1"
 
 [node name="end_level_sign" parent="." instance=ExtResource("4_u2qp5")]
 position = Vector2(470, 259)
-
-[node name="dumb_enemy" parent="." instance=ExtResource("5_fdn85")]
-position = Vector2(365, 439)
