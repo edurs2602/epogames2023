@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cqclils85wmrh" path="res://assets/door/door_closed5.png" id="6_o7ywy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cteu7"]
-size = Vector2(64, 96)
+size = Vector2(18, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v7geq"]
 atlas = ExtResource("2_p8ktu")
@@ -77,6 +77,7 @@ collision_mask = 3
 script = ExtResource("1_gjaia")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -0.5)
 shape = SubResource("RectangleShape2D_cteu7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

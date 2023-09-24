@@ -13,6 +13,54 @@ func _ready():
 
 	while(power_1 == power_2):
 		power_2 = randi()%number_of_powers
+		
+	var power_up_arr_1 = GlobalVariables.POWER_UPS[power_1]
+	var power_up_arr_2 = GlobalVariables.POWER_UPS[power_2]
+	
+	for power in power_up_arr_1:
+		if power[0] == "PLAYER_SPEED":
+			if power[1] > 0:
+				$left_card/left_1.frame = 7
+			if power[1] < 0:
+				$left_card/left_2.frame = 8
+		elif power[0] == "PLAYER_LIFE":
+			if power[1] > 0:
+				$left_card/left_1.frame = 1
+			if power[1] < 0:
+				$left_card/left_2.frame = 2
+		elif power[0] == "PLAYER_DAMAGE":
+			if power[1] > 0:
+				$left_card/left_1.frame = 3
+			if power[1] < 0:
+				$left_card/left_2.frame = 4
+		elif power[0] == "PLAYER_JUMP_VELOCITY":
+			if power[1] < 0:
+				$left_card/left_1.frame = 5
+			if power[1] > 0:
+				$left_card/left_2.frame = 6
+	
+	for power in power_up_arr_2:
+		if power[0] == "PLAYER_SPEED":
+			if power[1] > 0:
+				$right_card/left_1.frame = 7
+			if power[1] < 0:
+				$right_card/left_2.frame = 8
+		elif power[0] == "PLAYER_LIFE":
+			if power[1] > 0:
+				$right_card/left_1.frame = 1
+			if power[1] < 0:
+				$right_card/left_2.frame = 2
+		elif power[0] == "PLAYER_DAMAGE":
+			if power[1] > 0:
+				$right_card/left_1.frame = 3
+			if power[1] < 0:
+				$right_card/left_2.frame = 4
+		elif power[0] == "PLAYER_JUMP_VELOCITY":
+			if power[1] < 0:
+				$right_card/left_1.frame = 5
+			if power[1] > 0:
+				$right_card/left_2.frame = 6
+
 
 func _on_power_1_pressed():
 	give_player_power(power_1)

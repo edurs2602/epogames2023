@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://blqx68xfeg0ur"]
+[gd_scene load_steps=5 format=3 uid="uid://blqx68xfeg0ur"]
 
 [ext_resource type="Script" path="res://src/Actors/scripts/ui/choose_power_uo.gd" id="1_wjuoj"]
+[ext_resource type="Texture2D" uid="uid://t71ivlllgo3k" path="res://assets/final/mapa/Sprite da porra do mapa-0006-Sheet.jpeg" id="2_u1t1l"]
+[ext_resource type="Texture2D" uid="uid://bwopxa1tusr5j" path="res://assets/Sprite Sheet final level part1.png" id="3_mb3ln"]
+[ext_resource type="Texture2D" uid="uid://do6lvxnvc1ygh" path="res://assets/nada.png" id="4_upiyp"]
 
 [node name="choose_power_uo" type="Control"]
 layout_mode = 3
@@ -17,30 +20,81 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wjuoj")
 
-[node name="power_2" type="Button" parent="."]
-layout_mode = 2
-offset_left = 89.0
-offset_top = -129.0
-offset_right = 186.0
-offset_bottom = 56.0
-text = "Power Up 2"
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="power_1" type="Button" parent="."]
-layout_mode = 2
-offset_left = -141.0
-offset_top = -129.0
-offset_right = -44.0
-offset_bottom = 56.0
-text = "Power Up 1"
+[node name="background" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(615, 153)
+scale = Vector2(1.9, 1.9)
+texture = ExtResource("2_u1t1l")
 
-[node name="no_power" type="Button" parent="."]
-layout_mode = 2
-offset_left = -44.0
-offset_top = 115.0
-offset_right = 89.0
-offset_bottom = 184.0
-text = "No power"
+[node name="left_card" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-90, -39)
+scale = Vector2(5, 5)
+texture = ExtResource("3_mb3ln")
+hframes = 9
 
-[connection signal="pressed" from="power_2" to="." method="_on_power_2_pressed"]
-[connection signal="pressed" from="power_1" to="." method="_on_power_1_pressed"]
-[connection signal="pressed" from="no_power" to="." method="_on_no_power_pressed"]
+[node name="power_1" type="Button" parent="left_card"]
+offset_left = -12.0
+offset_top = -25.0
+offset_right = 12.0
+offset_bottom = 25.0
+flat = true
+
+[node name="left_1" type="Sprite2D" parent="left_card"]
+texture = ExtResource("3_mb3ln")
+hframes = 9
+frame = 3
+
+[node name="left_2" type="Sprite2D" parent="left_card"]
+texture = ExtResource("3_mb3ln")
+hframes = 9
+frame = 1
+
+[node name="right_card" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(143, -39)
+scale = Vector2(5, 5)
+texture = ExtResource("3_mb3ln")
+hframes = 9
+
+[node name="power_2" type="Button" parent="right_card"]
+offset_left = -12.0
+offset_top = -25.0
+offset_right = 12.0
+offset_bottom = 25.0
+flat = true
+
+[node name="left_1" type="Sprite2D" parent="right_card"]
+texture = ExtResource("3_mb3ln")
+hframes = 9
+
+[node name="left_2" type="Sprite2D" parent="right_card"]
+texture = ExtResource("3_mb3ln")
+hframes = 9
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(26.5, 159)
+scale = Vector2(14.7083, 5)
+texture = ExtResource("3_mb3ln")
+hframes = 9
+vframes = 2
+
+[node name="no_power" type="Button" parent="Sprite2D3"]
+offset_left = -12.0
+offset_top = -13.0
+offset_right = 12.0
+offset_bottom = 12.0
+theme_override_font_sizes/font_size = 2
+flat = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="Sprite2D3"]
+texture_filter = 1
+position = Vector2(0.254956, 0.400009)
+scale = Vector2(0.57087, 2.14)
+texture = ExtResource("4_upiyp")
+
+[connection signal="pressed" from="left_card/power_1" to="." method="_on_power_1_pressed"]
+[connection signal="pressed" from="right_card/power_2" to="." method="_on_power_2_pressed"]
+[connection signal="pressed" from="Sprite2D3/no_power" to="." method="_on_no_power_pressed"]
