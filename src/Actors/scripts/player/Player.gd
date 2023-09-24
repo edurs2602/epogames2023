@@ -60,7 +60,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("shift"):
 		attack_collision_hitbox.disabled = false
 		timer.start()
-		attack()
+		#attack()
 	
 	if Input.is_action_just_pressed("ui_left"):
 		if attack_collision_hitbox.position.x > 0:

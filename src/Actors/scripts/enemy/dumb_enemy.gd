@@ -51,4 +51,4 @@ func take_damage(damage):
 		self.queue_free()
 
 func _on_hurtbox_area_entered(area):
-	take_damage(10)
+	take_damage(GlobalVariables.PLAYER_DAMAGE)
