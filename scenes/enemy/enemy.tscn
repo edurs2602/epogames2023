@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://drgy2acdocr8o"]
 
 [ext_resource type="Script" path="res://src/Actors/scripts/enemy/enemy.gd" id="1_05rl1"]
-[ext_resource type="Texture2D" uid="uid://btokv6av53k4c" path="res://assets/sheet_preda.png" id="2_kcwga"]
+[ext_resource type="Texture2D" path="res://assets/sheet_preda.png" id="2_kcwga"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k372h"]
 size = Vector2(153, 38.5)
