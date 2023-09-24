@@ -1,12 +1,12 @@
 [gd_scene load_steps=16 format=3 uid="uid://5runqmuoeab2"]
 
 [ext_resource type="Script" path="res://src/Actors/scripts/enviroment/door.gd" id="1_gjaia"]
-[ext_resource type="Texture2D" path="res://assets/door/door_closed.png" id="2_p8ktu"]
-[ext_resource type="Texture2D" path="res://assets/door/door_closed2.png" id="3_gld4h"]
-[ext_resource type="Texture2D" path="res://assets/door/door_closed_final.png" id="3_v0hfy"]
-[ext_resource type="Texture2D" path="res://assets/door/door_closed3.png" id="4_10uxg"]
-[ext_resource type="Texture2D" path="res://assets/door/door_closed4.png" id="5_b1anx"]
-[ext_resource type="Texture2D" path="res://assets/door/door_closed5.png" id="6_o7ywy"]
+[ext_resource type="Texture2D" uid="uid://flckr7j5tkxh" path="res://assets/door/door_closed.png" id="2_p8ktu"]
+[ext_resource type="Texture2D" uid="uid://8am8o5amc68u" path="res://assets/door/door_closed2.png" id="3_gld4h"]
+[ext_resource type="Texture2D" uid="uid://cuwoqylv7kbkf" path="res://assets/door/door_closed_final.png" id="3_v0hfy"]
+[ext_resource type="Texture2D" uid="uid://brkgn14j0nnqb" path="res://assets/door/door_closed3.png" id="4_10uxg"]
+[ext_resource type="Texture2D" uid="uid://km36860eu8ui" path="res://assets/door/door_closed4.png" id="5_b1anx"]
+[ext_resource type="Texture2D" uid="uid://cqclils85wmrh" path="res://assets/door/door_closed5.png" id="6_o7ywy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cteu7"]
 size = Vector2(64, 96)

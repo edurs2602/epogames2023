@@ -18,6 +18,8 @@ extends CharacterBody2D
 @onready var sound_attack = $Sound_attack 
 @onready var sound_dead = $Sound_dead
 @onready var sound_hurt = $Sound_hurt
+@onready var health_bar = $UI/CanvasLayer/Control/healthBar
+
 
 var enemy_on_hitbox = null
 var is_player_alive = true
@@ -32,6 +34,10 @@ func player():
 
 func change_dir(dir): 
 	pass
+	
+
+func _ready():
+	health_bar.max_value = LIFE
 
 
 func _physics_process(delta):
@@ -111,7 +117,7 @@ func take_damage(damage_count: int ):
 		receive_knockback(Vector2(200,-200))
 		
 	animated_sprite.play("damage")
-	var health_bar = get_node("/root/main_node/healthBar")
+	
 	health_bar.value -= damage_count
 	
 	if (LIFE <= 0):

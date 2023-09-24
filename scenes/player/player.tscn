@@ -1,9 +1,9 @@
-[gd_scene load_steps=48 format=3 uid="uid://eyoe1g8a7aj8"]
+[gd_scene load_steps=49 format=3 uid="uid://eyoe1g8a7aj8"]
 
 [ext_resource type="Script" path="res://src/Actors/scripts/player/Player.gd" id="1_ihxq4"]
-[ext_resource type="Texture2D" path="res://assets/sprite_sheet_da_coelha.png" id="2_r23y5"]
-[ext_resource type="Texture2D" path="res://assets/sprite_sheet_da_coelha_batendo_parada.png" id="3_qis3c"]
-[ext_resource type="Texture2D" path="res://assets/sprite_sheet_da_coelha_batendo_e_andando.png" id="4_2gtol"]
+[ext_resource type="Texture2D" uid="uid://6s7di42d3fje" path="res://assets/sprite_sheet_da_coelha.png" id="2_r23y5"]
+[ext_resource type="Texture2D" uid="uid://bb7qridveum3g" path="res://assets/sprite_sheet_da_coelha_batendo_parada.png" id="3_qis3c"]
+[ext_resource type="Texture2D" uid="uid://1lw4hn0t6ygi" path="res://assets/sprite_sheet_da_coelha_batendo_e_andando.png" id="4_2gtol"]
 [ext_resource type="AudioStream" uid="uid://catlf1b4535da" path="res://assets/sounds/Step_1.wav" id="5_hpkjh"]
 [ext_resource type="AudioStream" uid="uid://cafc2h0jswf3n" path="res://assets/sounds/Step_2.wav" id="6_fmo6k"]
 [ext_resource type="AudioStream" uid="uid://errvg6p84qik" path="res://assets/sounds/Jump_1.wav" id="7_ds3q4"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://ck4fs8yu8fb3y" path="res://assets/sounds/Dead.wav" id="11_2fcl2"]
 [ext_resource type="AudioStream" uid="uid://cdq3brbjjcr1p" path="res://assets/sounds/Player_hurt_1.wav" id="12_fwxrj"]
 [ext_resource type="AudioStream" uid="uid://dmrclpfqvbi6c" path="res://assets/sounds/Player_hurt_2.wav" id="13_c1nnb"]
+[ext_resource type="PackedScene" uid="uid://bfbfsvbmogd6j" path="res://scenes/ui/UI.tscn" id="14_og8r2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p01ed"]
 size = Vector2(45, 25.75)
@@ -353,6 +354,14 @@ stream = ExtResource("11_2fcl2")
 
 [node name="Sound_hurt" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_r7hsi")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 50.0
+
+[node name="UI" parent="." instance=ExtResource("14_og8r2")]
 
 [connection signal="body_entered" from="attack_hitbox" to="." method="_on_attack_hitbox_body_entered"]
 [connection signal="body_exited" from="attack_hitbox" to="." method="_on_attack_hitbox_body_exited"]
