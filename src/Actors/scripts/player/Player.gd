@@ -12,6 +12,9 @@ extends CharacterBody2D
 @onready var animated_sprite=$Marker2D/AnimatedSprite2D
 @onready var raycast_right = $raycast_right
 @onready var raycast_left = $raycast_left
+@onready var sound_step = $Sound_step
+@onready var step_timer = $Sound_step/Step_timer
+@onready var sound_jump = $Sound_jump
 
 var enemy_on_hitbox = null
 var is_player_alive = true
@@ -35,6 +38,7 @@ func _physics_process(delta):
 	
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		sound_jump.play()
 		velocity.y = JUMP_VELOCITY
 
 	
@@ -46,7 +50,14 @@ func _physics_process(delta):
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+		
+	if is_on_floor():
+		if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") :
+			if step_timer.time_left <= 0:
+				sound_step.play()
+				step_timer.start()
+	
+	
 	if knockback_vector != Vector2.ZERO:
 		print(knockback_vector)
 		velocity = knockback_vector
@@ -70,7 +81,7 @@ func _process(delta):
 		if attack_collision_hitbox.position.x < 0:
 			attack_collision_hitbox.position.x *= -1
 		animated_sprite.flip_h = false
-		
+
 
 func receive_knockback(knockback_force : Vector2, damage := true, duration := .3):
 	
@@ -98,12 +109,13 @@ func take_damage(damage_count: int ):
 		self.set_process(false)
 		self.set_physics_process(false)
 
+
 func attack():
 	print("attack")
+	
 	if enemy_on_hitbox:
 		print(enemy_on_hitbox)
 		enemy_on_hitbox.take_damage(DAMAGE)
-
 
 
 func _on_attack_hitbox_body_entered(body):
@@ -119,7 +131,8 @@ func _on_attack_hitbox_body_exited(body):
 
 func _on_timer_timeout():
 	attack_collision_hitbox.disabled = true
-	
+
+
 func animating_sprite():
 	if not is_on_floor():
 		if velocity.y < 0:
@@ -131,9 +144,12 @@ func animating_sprite():
 	else:
 		animated_sprite.play("idle")
 
-	
 
 func _on_animated_sprite_2d_animation_looped():
 	if animated_sprite.animation == "dying":
 		animated_sprite.pause()
 		animated_sprite.set_frame_and_progress(2,0)
+
+
+func _on_step_timer_timeout():
+	pass

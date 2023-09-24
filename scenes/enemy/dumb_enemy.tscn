@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://ciegtglp2k0dm"]
 
 [ext_resource type="Script" path="res://src/Actors/scripts/enemy/dumb_enemy.gd" id="1_14x5q"]
-[ext_resource type="Texture2D" uid="uid://f7042bv5gaeo" path="res://assets/sheet_golem_golem_golem_golem.png" id="2_n0dds"]
+[ext_resource type="Texture2D" path="res://assets/sheet_golem_golem_golem_golem.png" id="2_n0dds"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_if0n8"]
 
