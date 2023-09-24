@@ -355,6 +355,7 @@ stream = ExtResource("11_2fcl2")
 stream = SubResource("AudioStreamRandomizer_r7hsi")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 50.0
