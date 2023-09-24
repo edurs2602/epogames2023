@@ -16,6 +16,9 @@ var is_enemy_on_floor = null
 var timing_fly = null
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+func _ready():
+	$Marker2D/AnimatedSprite2D.play("fly")
+	timer.start()
 
 func _physics_process(delta):
 	if is_on_floor():
@@ -27,17 +30,19 @@ func _physics_process(delta):
 		
 	if !is_enemy_on_floor and !player_chase:
 		#velocity.y += (directionYIdle * SPEED) * delta
-		velocity.y = move_toward(position.y, position.y - 2, delta * yDelta)
+		#velocity.y = move_toward(position.y, position.y - 2, delta * yDelta)
+		pass
 		
 	if(player_chase):
 		position += (player.position - position)/SPEED
+		
+		if (player.position.x - position.x) > 0:
+			$Marker2D/AnimatedSprite2D.flip_h = true
+		else:
+			$Marker2D/AnimatedSprite2D.flip_h = false
+			
 
 	move_and_slide()
-	
-	
-func _ready():
-	
-	timer.start()
 	
 func _process(delta):
 	pass

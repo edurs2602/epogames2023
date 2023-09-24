@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cictcb1ljgss2"]
+[gd_scene load_steps=13 format=3 uid="uid://qnrp8kptenph"]
 
-[ext_resource type="Texture2D" uid="uid://hhqudxgwpryt" path="res://assets/fly_enemy.png" id="1_faspw"]
 [ext_resource type="Script" path="res://src/Actors/scripts/fly_enemy.gd" id="1_n3cx5"]
+[ext_resource type="Texture2D" uid="uid://cc580r2p85a7k" path="res://assets/Sprite_sheet_olho.png" id="2_02o6l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qx8ha"]
 radius = 36.5266
@@ -10,6 +10,56 @@ radius = 36.5266
 size = Vector2(71, 67)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jhgx4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wig2l"]
+atlas = ExtResource("2_02o6l")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fenwe"]
+atlas = ExtResource("2_02o6l")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vlk8"]
+atlas = ExtResource("2_02o6l")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb77q"]
+atlas = ExtResource("2_02o6l")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6wxo"]
+atlas = ExtResource("2_02o6l")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ioqlt"]
+atlas = ExtResource("2_02o6l")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_15d8f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wig2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fenwe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vlk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eb77q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6wxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ioqlt")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
 
 [node name="fly_enemy" type="CharacterBody2D"]
 collision_layer = 2
@@ -47,10 +97,9 @@ shape = SubResource("CircleShape2D_jhgx4")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
-position = Vector2(-0.5, -1.5)
-scale = Vector2(0.657407, 0.72043)
-texture = ExtResource("1_faspw")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Marker2D"]
+sprite_frames = SubResource("SpriteFrames_15d8f")
+animation = &"fly"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
