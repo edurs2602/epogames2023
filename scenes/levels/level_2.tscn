@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dewkiqhotnuch" path="res://assets/start-assets/background.png" id="1_uq7ld"]
 [ext_resource type="PackedScene" uid="uid://eyoe1g8a7aj8" path="res://scenes/player/player.tscn" id="2_ufgrk"]
 [ext_resource type="Script" path="res://src/Actors/scripts/player/ProgressBar.gd" id="3_l4v47"]
-[ext_resource type="PackedScene" uid="uid://dqpcrid6myhsv" path="res://scenes/enviroment/end_level_sign2.tscn" id="4_bwhn7"]
+[ext_resource type="PackedScene" uid="uid://buy2fsscnuw0w" path="res://scenes/enviroment/end_level_sign1.tscn" id="4_7rv62"]
 
 [sub_resource type="TileSet" id="TileSet_5kb6j"]
 
@@ -67,5 +67,5 @@ offset_right = 342.0
 offset_bottom = 284.0
 text = "level 2 poha"
 
-[node name="end_level_sign" parent="." instance=ExtResource("4_bwhn7")]
-position = Vector2(320, 442)
+[node name="end_level_sign1" parent="." instance=ExtResource("4_7rv62")]
+position = Vector2(322, 445)
