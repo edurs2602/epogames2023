@@ -17,6 +17,7 @@ extends CharacterBody2D
 @onready var sound_jump = $Sound_jump
 @onready var sound_attack = $Sound_attack 
 @onready var sound_dead = $Sound_dead
+@onready var sound_hurt = $Sound_hurt
 
 var enemy_on_hitbox = null
 var is_player_alive = true
@@ -101,6 +102,8 @@ func receive_knockback(knockback_force : Vector2, damage := true, duration := .3
 
 func take_damage(damage_count: int ):
 	LIFE -= damage_count
+	
+	sound_hurt.play()
 	
 	if raycast_right.is_colliding():
 		receive_knockback(Vector2(-200,-200))
