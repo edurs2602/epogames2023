@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfbfsvbmogd6j"]
+
+[ext_resource type="Script" path="res://src/Actors/scripts/ui/UI.gd" id="1_7af5x"]
+[ext_resource type="Script" path="res://src/Actors/scripts/player/ProgressBar.gd" id="2_igkps"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_7af5x")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="healthBar" type="ProgressBar" parent="CanvasLayer/Control" groups=["health_bar"]]
+modulate = Color(0.894118, 0, 0, 1)
+show_behind_parent = true
+layout_mode = 2
+offset_left = 20.0
+offset_top = 23.0
+offset_right = 239.0
+offset_bottom = 56.0
+value = 100.0
+script = ExtResource("2_igkps")
