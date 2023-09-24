@@ -7,6 +7,7 @@ var PLAYER_DAMAGE = 2
 
 var PLAYER_POWER_UPS = []
 
+var player_on_level = 1
 var resolution_level = 3
 
 var POWER_UPS = [

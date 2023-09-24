@@ -42,5 +42,10 @@ func give_player_power(index):
 		GlobalVariables.PLAYER_POWER_UPS.append(power)
 			
 func next_level():
-	print(GlobalVariables.PLAYER_POWER_UPS)
+	if GlobalVariables.player_on_level == 1:
+		GlobalVariables.player_on_level += 1
+		get_tree().change_scene_to_file("res://scenes/levels/level_2.tscn")
+	elif GlobalVariables.player_on_level == 2:
+		GlobalVariables.player_on_level += 1
+		get_tree().change_scene_to_file("res://scenes/levels/level_3.tscn")
 	pass
