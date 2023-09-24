@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://ciegtglp2k0dm"]
+
+[ext_resource type="Script" path="res://src/Actors/scripts/enemy/dumb_enemy.gd" id="1_14x5q"]
+[ext_resource type="Texture2D" uid="uid://f7042bv5gaeo" path="res://assets/sheet_golem_golem_golem_golem.png" id="2_n0dds"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_if0n8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_18dmm"]
+radius = 11.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b2o5w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15l3m"]
+atlas = ExtResource("2_n0dds")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2d6tr"]
+atlas = ExtResource("2_n0dds")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mkl0i"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15l3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2d6tr")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[node name="dumb_enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_14x5q")
+
+[node name="enemy_colision" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_if0n8")
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_18dmm")
+debug_color = Color(0.996078, 0, 0.180392, 0.419608)
+
+[node name="attack_cooldown" type="Timer" parent="."]
+autostart = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_b2o5w")
+debug_color = Color(0.219608, 0.509804, 1, 0.419608)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mkl0i")
+animation = &"walking"
+offset = Vector2(0, -6)
+
+[node name="ray_down" type="RayCast2D" parent="."]
+position = Vector2(-10, -8)
+target_position = Vector2(0, 19)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="ray_front" type="RayCast2D" parent="."]
+position = Vector2(-1, -1)
+target_position = Vector2(-12, 0)
+collision_mask = 4
+collide_with_areas = true
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
