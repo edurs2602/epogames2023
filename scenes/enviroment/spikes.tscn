@@ -7,7 +7,7 @@
 size = Vector2(24, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ak7yw"]
-size = Vector2(24, 12)
+size = Vector2(24, 17)
 
 [node name="spikes" type="StaticBody2D"]
 collision_layer = 4
@@ -26,7 +26,7 @@ hframes = 3
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 6)
+position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_ak7yw")
 debug_color = Color(0.996078, 0, 0.192157, 0.419608)
 

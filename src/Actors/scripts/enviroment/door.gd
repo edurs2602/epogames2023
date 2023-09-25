@@ -41,3 +41,11 @@ func _on_torch_2_torch_lighted(torch_group):
 	
 	if atived_levers == number_of_levers:
 		open_door()
+
+
+func _on_torch_3_torch_lighted(torch_group):
+	if torch_group == door_group:
+		atived_levers += 1
+	
+	if atived_levers == number_of_levers:
+		open_door()

@@ -11,14 +11,19 @@ extends CharacterBody2D
 @onready var attack_timer = $attack_hitbox/Attack_timer
 @onready var animated_sprite=$Marker2D/AnimatedSprite2D
 @onready var raycast_right = $raycast_right
+@onready var raycast_right2 = $raycast_right2
+@onready var raycast_right3 = $raycast_right3
 @onready var raycast_left = $raycast_left
+@onready var raycast_left2 = $raycast_left2
+@onready var raycast_left3 = $raycast_left3
+@onready var raycast_down = $raycast_down
+@onready var raycast_up = $raycast_up
 @onready var sound_step = $Sound_step
 @onready var step_timer = $Sound_step/Step_timer
 @onready var sound_jump = $Sound_jump
 @onready var sound_attack = $Sound_attack 
 @onready var sound_dead = $Sound_dead
 @onready var sound_hurt = $Sound_hurt
-@onready var health_bar = $UI/CanvasLayer/Control/healthBar
 
 
 var enemy_on_hitbox = null
@@ -29,16 +34,14 @@ var knockback_vector := Vector2.ZERO
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+signal player_take_damage
+
 func player():
 	pass
 
 func change_dir(dir): 
 	pass
 	
-
-func _ready():
-	health_bar.max_value = LIFE
-
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -76,6 +79,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _process(delta):
+	
 	if Input.is_action_just_pressed("shift") and $Marker2D/whip_sprite/whip_wait_to_end.time_left == 0:
 		if attack_timer.time_left <= 0:
 			sound_attack.play()
@@ -121,22 +125,29 @@ func receive_knockback(knockback_force : Vector2, damage := true, duration := .3
 func take_damage(damage_count: int ):
 	LIFE -= damage_count
 	
+	emit_signal("player_take_damage", LIFE)
+	
 	sound_hurt.play()
 	
-	if raycast_right.is_colliding():
+	if raycast_right.is_colliding() or raycast_right2.is_colliding() or raycast_right3.is_colliding():
 		receive_knockback(Vector2(-200,-200))
-	elif raycast_left.is_colliding():
+	elif raycast_left.is_colliding() or raycast_left2.is_colliding() or raycast_left3.is_colliding():
 		receive_knockback(Vector2(200,-200))
+	elif raycast_down.is_colliding():
+		receive_knockback(Vector2(0,-200))
+	elif raycast_up.is_colliding():
+		receive_knockback(Vector2(200, 100))
 		
 	animated_sprite.play("damage")
 	
-	health_bar.value -= damage_count
 	
 	if (LIFE <= 0):
 		sound_dead.play()
 		animated_sprite.play("dying")
 		self.set_process(false)
 		self.set_physics_process(false)
+		$after_death.start()
+		
 
 
 func attack():
@@ -187,3 +198,7 @@ func _on_step_timer_timeout():
 func _on_whip_wait_to_end_timeout():
 	animated_sprite.show()
 	$Marker2D/whip_sprite.hide()
+
+
+func _on_after_death_timeout():
+	get_tree().change_scene_to_file("res://scenes/menu/menu.tscn")

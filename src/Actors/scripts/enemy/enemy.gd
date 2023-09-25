@@ -13,7 +13,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var animated_sprite = $AnimatedSprite2D
 
-
+func _ready():
+	animated_sprite.play("idle")
 
 func enemy():
 	pass
