@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d154p7p3c42hl"]
+[gd_scene load_steps=10 format=3 uid="uid://d154p7p3c42hl"]
 
 [ext_resource type="Texture2D" uid="uid://dewkiqhotnuch" path="res://assets/start-assets/background.png" id="1_bltl3"]
 [ext_resource type="PackedScene" uid="uid://eyoe1g8a7aj8" path="res://scenes/player/player.tscn" id="2_l8ypi"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://buy2fsscnuw0w" path="res://scenes/enviroment/end_level_sign1.tscn" id="4_6cku5"]
 [ext_resource type="PackedScene" uid="uid://5runqmuoeab2" path="res://scenes/enviroment/door.tscn" id="5_clvm7"]
 [ext_resource type="PackedScene" uid="uid://ct0wngjuegbbg" path="res://scenes/enviroment/torch.tscn" id="6_kaash"]
+[ext_resource type="PackedScene" uid="uid://ciegtglp2k0dm" path="res://scenes/enemy/dumb_enemy.tscn" id="8_qd7hf"]
 
 [sub_resource type="TileSet" id="TileSet_5kb6j"]
 
@@ -84,6 +85,9 @@ door_group = "teste"
 [node name="torch2" parent="door" instance=ExtResource("6_kaash")]
 position = Vector2(-70, 5)
 door_group = "teste"
+
+[node name="dumb_enemy" parent="." instance=ExtResource("8_qd7hf")]
+position = Vector2(353, 439)
 
 [connection signal="torch_lighted" from="door/torch" to="door" method="_on_torch_torch_lighted"]
 [connection signal="torch_lighted" from="door/torch2" to="door" method="_on_torch_2_torch_lighted"]

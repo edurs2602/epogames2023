@@ -92,8 +92,8 @@ func give_player_power(index):
 func next_level():
 	if GlobalVariables.player_on_level == 1:
 		GlobalVariables.player_on_level += 1
-		get_tree().change_scene_to_file("res://scenes/levels/level_2.tscn")
+		get_tree().change_scene_to_file("res://scenes/levels/fases finais-pronto/fases finais/nivel_2.tscn")
 	elif GlobalVariables.player_on_level == 2:
 		GlobalVariables.player_on_level += 1
-		get_tree().change_scene_to_file("res://scenes/levels/level_3.tscn")
+		get_tree().change_scene_to_file("res://scenes/menu/end_game.tscn")
 	pass

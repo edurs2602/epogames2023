@@ -1,9 +1,9 @@
-[gd_scene load_steps=49 format=3 uid="uid://eyoe1g8a7aj8"]
+[gd_scene load_steps=50 format=3 uid="uid://eyoe1g8a7aj8"]
 
 [ext_resource type="Script" path="res://src/Actors/scripts/player/Player.gd" id="1_ihxq4"]
 [ext_resource type="Texture2D" uid="uid://6s7di42d3fje" path="res://assets/sprite_sheet_da_coelha.png" id="2_r23y5"]
 [ext_resource type="Texture2D" uid="uid://1lw4hn0t6ygi" path="res://assets/sprite_sheet_da_coelha_batendo_e_andando.png" id="4_2gtol"]
-[ext_resource type="Texture2D" path="res://assets/sprite sheet da coelha batendot.png" id="4_vb3u8"]
+[ext_resource type="Texture2D" uid="uid://b11w0ofkihosd" path="res://assets/sprite sheet da coelha batendot.png" id="4_vb3u8"]
 [ext_resource type="AudioStream" uid="uid://catlf1b4535da" path="res://assets/sounds/Step_1.wav" id="5_hpkjh"]
 [ext_resource type="AudioStream" uid="uid://cafc2h0jswf3n" path="res://assets/sounds/Step_2.wav" id="6_fmo6k"]
 [ext_resource type="AudioStream" uid="uid://errvg6p84qik" path="res://assets/sounds/Jump_1.wav" id="7_ds3q4"]
@@ -24,7 +24,7 @@ height = 48.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ex1ju"]
 radius = 14.0
-height = 48.0
+height = 44.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8mj4m"]
 atlas = ExtResource("2_r23y5")
@@ -340,11 +340,42 @@ wait_time = 0.8
 one_shot = true
 
 [node name="raycast_right" type="RayCast2D" parent="."]
-target_position = Vector2(10, 0)
+target_position = Vector2(13, 0)
 collision_mask = 2
+collide_with_areas = true
+
+[node name="raycast_down" type="RayCast2D" parent="."]
+target_position = Vector2(0, 13)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="raycast_up" type="RayCast2D" parent="."]
+target_position = Vector2(0, -14)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="raycast_right2" type="RayCast2D" parent="."]
+target_position = Vector2(12, -10)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="raycast_right3" type="RayCast2D" parent="."]
+target_position = Vector2(11, 10)
+collision_mask = 2
+collide_with_areas = true
 
 [node name="raycast_left" type="RayCast2D" parent="."]
-target_position = Vector2(-10, 0)
+target_position = Vector2(-12, 0)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="raycast_left2" type="RayCast2D" parent="."]
+target_position = Vector2(-10, 10)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="raycast_left3" type="RayCast2D" parent="."]
+target_position = Vector2(-11, -10)
 collision_mask = 2
 collide_with_areas = true
 
@@ -379,6 +410,11 @@ position_smoothing_speed = 50.0
 
 [node name="UI" parent="." instance=ExtResource("14_og8r2")]
 
+[node name="after_death" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="player_take_damage" from="." to="UI" method="_on_player_player_take_damage"]
 [connection signal="body_entered" from="attack_hitbox" to="." method="_on_attack_hitbox_body_entered"]
 [connection signal="body_exited" from="attack_hitbox" to="." method="_on_attack_hitbox_body_exited"]
 [connection signal="timeout" from="attack_hitbox/Attack_timer" to="." method="_on_timer_timeout"]
@@ -388,3 +424,4 @@ position_smoothing_speed = 50.0
 [connection signal="animation_looped" from="Marker2D/whip_sprite" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="timeout" from="Marker2D/whip_sprite/whip_wait_to_end" to="." method="_on_whip_wait_to_end_timeout"]
 [connection signal="timeout" from="Sound_step/Step_timer" to="." method="_on_step_timer_timeout"]
+[connection signal="timeout" from="after_death" to="." method="_on_after_death_timeout"]

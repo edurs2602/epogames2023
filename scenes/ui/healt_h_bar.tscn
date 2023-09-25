@@ -1,0 +1,99 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhydp24jhqjk7"]
+
+[ext_resource type="Script" path="res://src/Actors/scripts/ui/healtH_bar.gd" id="1_gqwkw"]
+[ext_resource type="Texture2D" uid="uid://unyghytyx5nt" path="res://assets/a caceta dos coracoes.png" id="2_dufug"]
+
+[node name="healtH_bar" type="HBoxContainer"]
+offset_right = 170.0
+offset_bottom = 40.0
+script = ExtResource("1_gqwkw")
+
+[node name="coracaao" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_dufug")
+expand_mode = 3
+
+[node name="coracaao2" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_dufug")
+expand_mode = 3
+
+[node name="coracaao3" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_dufug")
+expand_mode = 3
+
+[node name="coracaao4" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_dufug")
+expand_mode = 3
+
+[node name="coracaao5" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_dufug")
+expand_mode = 3
+
+[node name="coracaao6" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_dufug")
+expand_mode = 3
+
+[node name="coracaao7" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_dufug")
+expand_mode = 3
+
+[node name="coracaao8" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_dufug")
+expand_mode = 3
+
+[node name="coracaao9" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_dufug")
+expand_mode = 3
+
+[node name="coracaao10" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_dufug")
+expand_mode = 3
+
+[node name="coracaao11" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_dufug")
+expand_mode = 3
+
+[node name="coracaao12" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_dufug")
+expand_mode = 3
+
+[node name="coracaao13" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_dufug")
+expand_mode = 3
+
+[node name="coracaao14" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_dufug")
+expand_mode = 3
+
+[node name="coracaao15" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_dufug")
+expand_mode = 3

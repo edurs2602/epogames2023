@@ -1,11 +1,20 @@
 extends CanvasLayer
 
+@onready var health_bar = $CanvasLayer/Control/healtH_bar
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if GlobalVariables.PLAYER_LIFE !=  health_bar.get_child_count():
+		update_health(GlobalVariables.PLAYER_LIFE)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Input.is_action_just_pressed("ui_cancel"):
+		$CanvasLayer/menu.visible
+
+func update_health(value):
+	for i in health_bar.get_child_count():
+		health_bar.get_child(i).visible = value > i
+
+
+func _on_player_player_take_damage(actual_life):
+	print(actual_life)
+	update_health(actual_life)
